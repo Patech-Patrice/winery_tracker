@@ -1,3 +1,4 @@
 class WinerySerializer < ActiveModel::Serializer
-  attributes :id
+  has_many :wines
+  attributes :id, :name, :year_founded, :types_offered, :location, :affordable
 end
