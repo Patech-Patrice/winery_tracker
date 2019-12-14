@@ -19,7 +19,8 @@ class Api::V1::WineriesController < ApplicationController
 
     def update 
         @winery.update(winery_params)
-        if @winery.save
+         #binding.pry
+        if @winery.save!
           render json: @winery, status: 200
         else
           render json: { errors: @winery.errors.full_messages }, status: :unprocessible_entity
