@@ -8,7 +8,8 @@ class Api::V1::WineriesController < ApplicationController
 
     def show
         @winery = Winery.find(params[:id])
-        render json: @winery, status: 200
+        #render json: @winery, status: 200
+        render json: @winery.to_json(include: [:wines]), status: :ok
     end 
 
     def create
