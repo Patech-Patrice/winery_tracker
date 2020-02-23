@@ -8,7 +8,6 @@ class Api::V1::WineriesController < ApplicationController
 
     def show
         @winery = Winery.find(params[:id])
-        #render json: @winery, status: 200
         render json: @winery.to_json(include: [:wines]), status: :ok
     end 
 
@@ -18,22 +17,11 @@ class Api::V1::WineriesController < ApplicationController
     end
 
 
-    def update 
-        @winery.update(winery_params)
-         #binding.pry
-        if @winery.save!
-          render json: @winery, status: 200
-        else
-          render json: { errors: @winery.errors.full_messages }, status: :unprocessible_entity
-        end
-    end 
-
     def destroy
         winery = Winery.find_by(id: params[:id])
         winery.destroy
         render json: winery
     end
-
 
     private
 
@@ -42,9 +30,6 @@ class Api::V1::WineriesController < ApplicationController
     end
 
     def find_winery
-    @winery = Winery.find(params[:id])
+         @winery = Winery.find(params[:id])
     end
-
-
-
 end
