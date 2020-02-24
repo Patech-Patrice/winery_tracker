@@ -16,6 +16,18 @@ class Api::V1::WineriesController < ApplicationController
         render json: @winery, status: 200
     end
 
+    def update
+        byebug
+        @winery.update(winery_params)
+        if @winery.save!
+            #byebug
+            
+          render json: @winery, status: 200
+        else
+          render json: { errors: @winery.errors.full_messages }, status: :unprocessible_entity
+        end
+    end 
+
 
     def destroy
         winery = Winery.find_by(id: params[:id])

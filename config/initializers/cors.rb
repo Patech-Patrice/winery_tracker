@@ -11,6 +11,6 @@ Rails.application.config.middleware.use Rack::Cors do
     resource '*',
       :headers => :any,
       :expose  => ['access-token', 'expiry', 'token-type', 'Authorization'],
-      :methods => [:get, :post, :options, :delete, :put]
+      :methods => [:get, :post, :patch, :options, :delete, :put]
   end
 end
